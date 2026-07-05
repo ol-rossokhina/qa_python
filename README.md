@@ -50,7 +50,7 @@
 ## Структура проекта
 
 ```
-├── books_collector.py       # Основной класс BooksCollector
-├── test_books_collector.py  # Автотесты
+├── main.py       # Основной класс BooksCollector
+├── tests.py  # Автотесты
 └── README.md                # Описание проекта
 ```
