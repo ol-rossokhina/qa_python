@@ -111,3 +111,17 @@ class TestBooksCollector:
         collector.add_book_in_favorites('Дюна')
         collector.add_book_in_favorites('Гарри Поттер')
         assert collector.get_list_of_favorites_books() == ['Дюна', 'Гарри Поттер']
+
+    # 11. get_books_genre — возвращает текущий словарь books_genre
+    def test_get_books_genre_returns_dict(self):
+        collector = BooksCollector()
+        collector.add_new_book('Дюна')
+        collector.set_book_genre('Дюна', 'Фантастика')
+        assert collector.get_books_genre() == {'Дюна': 'Фантастика'}
+
+    # 12. get_book_genre — возвращает жанр книги по названию
+    def test_get_book_genre_returns_correct_genre(self):
+        collector = BooksCollector()
+        collector.add_new_book('Оно')
+        collector.set_book_genre('Оно', 'Ужасы')
+        assert collector.get_book_genre('Оно') == 'Ужасы'    

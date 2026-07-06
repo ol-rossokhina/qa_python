@@ -45,6 +45,13 @@
 | `test_delete_book_from_favorites_removes_book` | Проверяет, что книга успешно удаляется из избранного |
 | `test_get_list_of_favorites_books_returns_correct_list` | Проверяет, что метод возвращает корректный список избранных книг |
 
+### Получение словаря и жанра книги — `get_books_genre`, `get_book_genre`
+
+| Тест | Описание |
+|------|----------|
+| `test_get_books_genre_returns_dict` | Проверяет, что метод возвращает корректный словарь `books_genre` с правильными парами название: жанр |
+| `test_get_book_genre_returns_correct_genre` | Проверяет, что метод возвращает корректный жанр конкретной книги по её названию |
+
 ---
 
 ## Структура проекта
