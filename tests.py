@@ -64,8 +64,13 @@ class TestBooksCollector:
     # 6. get_books_with_specific_genre — параметризация: возвращает книги нужного жанра
     @pytest.mark.parametrize('name, genre', [
         ('Дюна', 'Фантастика'),
+        ('Марсианин', 'Фантастика'),
         ('Оно', 'Ужасы'),
-        ('Шерлок Холмс', 'Детективы')
+        ('Сияние', 'Ужасы'),
+        ('Шерлок Холмс', 'Детективы'),
+        ('Десять негритят', 'Детективы'),
+        ('Том и Джерри', 'Мультфильмы'),
+        ('Бриджит Джонс', 'Комедии')
     ])
     def test_get_books_with_specific_genre_returns_correct_books(self, name, genre):
         collector = BooksCollector()
