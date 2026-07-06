@@ -61,22 +61,28 @@ class TestBooksCollector:
         collector.set_book_genre('Дюна', 'Фантастика')
         assert collector.get_book_genre('Дюна') == 'Фантастика'
 
-    # 6. get_books_with_specific_genre — параметризация: возвращает книги нужного жанра
-    @pytest.mark.parametrize('name, genre', [
-        ('Дюна', 'Фантастика'),
-        ('Марсианин', 'Фантастика'),
-        ('Оно', 'Ужасы'),
-        ('Сияние', 'Ужасы'),
-        ('Шерлок Холмс', 'Детективы'),
-        ('Десять негритят', 'Детективы'),
-        ('Том и Джерри', 'Мультфильмы'),
-        ('Бриджит Джонс', 'Комедии')
-    ])
-    def test_get_books_with_specific_genre_returns_correct_books(self, name, genre):
+    # 6. get_books_with_specific_genre — возвращает книги нужного жанра
+    def test_get_books_with_specific_genre_returns_correct_books(self):
         collector = BooksCollector()
-        collector.add_new_book(name)
-        collector.set_book_genre(name, genre)
-        assert name in collector.get_books_with_specific_genre(genre)
+        books = [
+            ('Дюна', 'Фантастика'),
+            ('Марсианин', 'Фантастика'),
+            ('Оно', 'Ужасы'),
+            ('Сияние', 'Ужасы'),
+            ('Шерлок Холмс', 'Детективы'),
+            ('Десять негритят', 'Детективы'),
+            ('Том и Джерри', 'Мультфильмы'),
+            ('Бриджит Джонс', 'Комедии'),
+        ]
+        for name, genre in books:
+            collector.add_new_book(name)
+            collector.set_book_genre(name, genre)
+
+        assert collector.get_books_with_specific_genre('Фантастика') == ['Дюна', 'Марсианин']
+        assert collector.get_books_with_specific_genre('Ужасы') == ['Оно', 'Сияние']
+        assert collector.get_books_with_specific_genre('Детективы') == ['Шерлок Холмс', 'Десять негритят']
+        assert collector.get_books_with_specific_genre('Мультфильмы') == ['Том и Джерри']
+        assert collector.get_books_with_specific_genre('Комедии') == ['Бриджит Джонс']
 
     # 7. get_books_for_children — книги с возрастным рейтингом отсутствуют
     def test_get_books_for_children_excludes_age_rated_books(self):
